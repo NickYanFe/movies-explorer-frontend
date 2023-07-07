@@ -1,0 +1,121 @@
+.tech {
+  margin-top: 95px;
+  padding-bottom: 100px;
+  padding-left: 4px;
+}
+
+.tech__header {
+  letter-spacing: -0.58px;
+}
+.tech__title {
+  padding-top: 90px;
+}
+.tech__description {
+  margin: 0 auto;
+  padding-top: 26px;
+  max-width: 455px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.56px;
+}
+
+.tech__list {
+  margin-top: 100px;
+  padding-bottom: 0;
+}
+
+.tech__element {
+  width: 90px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  padding-top: 21px;
+  padding-bottom: 22px;
+  letter-spacing: -0.56px;
+}
+
+@media screen and (max-width: 768px) {
+  .tech {
+    padding-left: 0;
+    margin-top: 80px;
+  }
+  .tech__header {
+    letter-spacing: -1px;
+  }
+
+  .tech__title {
+    padding-top: 80px;
+    border-bottom: none;
+    letter-spacing: -2px;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+  }
+
+  .tech__description {
+    max-width: 460px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+    padding-top: 22px;
+  }
+
+  .tech__element {
+    width: 84px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    padding-bottom: 21px;
+  }
+
+  .tech__list {
+    margin-top: 83px;
+  }
+  .tech {
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .tech__title {
+    padding-top: 73px;
+    font-size: 30px;
+    letter-spacing: -1.6px;
+    letter-spacing: -1.2px;
+  }
+
+  .tech__list {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px 10px;
+  }
+  .tech {
+    margin-top: 52px;
+    max-width: 320px;
+    padding-bottom: 70px;
+  }
+
+  .tech__header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .tech__description {
+    padding-top: 15px;
+    font-size: 11px;
+    line-height: 16px;
+    max-width: 292px;
+    letter-spacing: -0.44px;
+  }
+
+  .tech__element {
+    width: 85px;
+    font-size: 12px;
+    padding-bottom: 21px;
+    letter-spacing: -0.48px;
+  }
+}

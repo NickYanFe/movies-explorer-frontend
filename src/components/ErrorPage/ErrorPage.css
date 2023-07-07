@@ -1,0 +1,66 @@
+.errorpage__header {
+  margin: 0 auto;
+  font-size: 140px;
+  font-weight: 400;
+  line-height: 169.43px;
+  color: #ffffff;
+  margin-top: 246px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.errorpage__message {
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.36px;
+  color: #ffffff;
+  margin-top: 5px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.errorpage__return-link {
+  margin: 0 auto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+
+  margin-top: 184px;
+  /* max-width: 400px;
+  width: 100%; */
+  text-align: center;
+  margin-bottom: 60px;
+  /* border: none;
+  text-decoration: none; */
+}
+
+.error__link {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.error__link:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 450px) {
+  .errorpage__header {
+    font-size: 80px;
+    margin-top: 329px;
+    max-width: 310px;
+    line-height: normal;
+  }
+
+  .errorpage__message {
+    font-size: 12px;
+  }
+
+  .errorpage__return-link {
+    font-size: 12px;
+    margin-top: 284px;
+    margin-bottom: 30px;
+  }
+}
