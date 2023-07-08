@@ -53,7 +53,10 @@
   height: 36px;
   width: 100%;
   align-self: center;
-  /* padding-left: 2px; */
+}
+
+.aboutproject__timescale:last-of-type {
+  margin-top: 7px;
 }
 
 .aboutproject__oneweek {
@@ -149,6 +152,10 @@
     margin-top: 7px;
     padding-left: 4px;
   }
+
+  .aboutproject__timescale:last-of-type {
+    padding-left: 4px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -210,6 +217,10 @@
   .aboutproject__figcaption {
     margin-top: 2px;
     font-size: 11px;
+    padding-left: 0;
+  }
+  .aboutproject__timescale:last-of-type {
+    margin-top: 2px;
     padding-left: 0;
   }
 }

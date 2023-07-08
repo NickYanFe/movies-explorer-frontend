@@ -110,7 +110,16 @@
   background-color: transparent;
 }
 
+@media screen and (max-width: 1200px) {
+  .profile {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .profile {
+    width: 100%;
+  }
   .profile__container {
     max-width: 708px;
     margin-top: 236px;
@@ -129,6 +138,10 @@
 }
 
 @media screen and (max-width: 320px) {
+  .profile {
+    width: 100%;
+  }
+  
   .profile__container {
     max-width: 300px;
     margin-top: 70px;

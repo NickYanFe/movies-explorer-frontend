@@ -47,21 +47,21 @@ function Profile() {
               disabled
             />
           </div>
-          <span className="auth__error">Что-то пошло не так...</span>
+          <span className="auth-error">Что-то пошло не так...</span>
           <div className="profile__line">
             <label className="profile__fieldname">E-mail</label>
             <input
               className="profile__input"
               defaultValue="pochta@yandex.ru"
               name="email"
-              type="text"
+              type="email"
               placeholder="email"
               required
               id="input1"
               disabled
             />
           </div>
-          <span className="auth__error">Что-то пошло не так...</span>
+          <span className="auth-error">Что-то пошло не так...</span>
           <button className="profile__edit button link" onClick={profileEdit}>
             {buttonText}
           </button>

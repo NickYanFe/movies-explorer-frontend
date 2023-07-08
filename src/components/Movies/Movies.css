@@ -4,14 +4,27 @@
   margin: auto;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1250px) {
   .movies {
-    max-width: 708px;
+    width: 90%;
   }
 }
 
+@media screen and (max-width: 768px) {
+  .movies {
+    max-width: 708px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .movies {
+    width: 90%;
+  }
+}
 @media screen and (max-width: 320px) {
   .movies {
     max-width: 320px;
+    width: 100%;
   }
 }

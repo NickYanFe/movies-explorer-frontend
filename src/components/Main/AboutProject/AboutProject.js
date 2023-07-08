@@ -28,7 +28,7 @@ function AboutProject() {
         <p className="aboutproject__oneweek ">1 неделя</p>
         <p className="aboutproject__fourweeks">4 недели</p>
       </div>
-      <div className="aboutproject__timescale aboutproject__figcaption">
+      <div className="aboutproject__timescale">
         <p className="aboutproject__oneweek aboutproject__figcaption">
           Back-end
         </p>

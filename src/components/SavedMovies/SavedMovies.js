@@ -18,10 +18,8 @@ function SavedMovies() {
   return (
     <section className="savedmovies">
       <Header isLoggedIn={true} />
-      <main>
-        <SearchForm />
-        <MoviesCardlist moviesList={onlyLikedMovies} isSavedMovies={true} />
-      </main>
+      <SearchForm />
+      <MoviesCardlist moviesList={onlyLikedMovies} isSavedMovies={true} />
       <Footer />
     </section>
   );

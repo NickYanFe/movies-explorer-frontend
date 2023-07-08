@@ -39,7 +39,7 @@ function Login({ isLoggedIn, onLogin, onLoading }) {
       <input
         name="Email"
         type="email"
-        className="popup__input auth__input"
+        className="auth__input"
         placeholder=""
         required
         minLength="2"
@@ -47,13 +47,13 @@ function Login({ isLoggedIn, onLogin, onLoading }) {
         onChange={handleEmailChange}
         value={email}
       />
-      <span className="auth__error">Что-то пошло не так...</span>
+      <span className="auth-error">Что-то пошло не так...</span>
 
       <legend className="auth__input-figcaption">Пароль</legend>
       <input
         name="Password"
         type="password"
-        className="popup__input auth__input"
+        className="auth__input"
         placeholder=""
         required
         minLength="2"
@@ -61,7 +61,7 @@ function Login({ isLoggedIn, onLogin, onLoading }) {
         onChange={handlePasswordChange}
         value={password}
       />
-      <span className="auth__error">Что-то пошло не так...</span>
+      <span className="auth-error">Что-то пошло не так...</span>
     </AuthForm>
   );
 }

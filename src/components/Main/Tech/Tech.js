@@ -4,7 +4,7 @@ function Tech() {
   return (
     <section className="aboutproject tech" id="tech">
       <h2 className="aboutproject__header tech__header">Технологии</h2>
-      <h1 className="promo__header tech__title">7 технологий</h1>{" "}
+      <h2 className="tech__title">7 технологий</h2>{" "}
       <p className="tech__description">
         На&nbsp;курсе вэб-разработки мы&nbsp;освоили технологии, которые
         применили в дипломном проекте.

@@ -11,13 +11,11 @@ function Main() {
   return (
     <section className="main">
       <Header isLoggedIn={false} />
-      <main>
-        <Promo />
-        <AboutProject />
-        <Tech />
-        <AboutMe />
-        <Portfolio />
-      </main>
+      <Promo />
+      <AboutProject />
+      <Tech />
+      <AboutMe />
+      <Portfolio />
       <Footer />
     </section>
   );

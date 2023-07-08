@@ -1,4 +1,6 @@
 .navtab {
+  max-width: 690px;
+  width: 100%;
   padding: 0;
   display: flex;
   margin: auto;
@@ -33,10 +35,10 @@
     margin-top: 212px;
     padding-bottom: 17px;
     gap: 6px;
-  }
+     }
 
   .navtab__element {
-    width: 82px;
+      width: 82px;
     font-size: 10px;
     padding-top: 5px;
     padding-bottom: 5px;

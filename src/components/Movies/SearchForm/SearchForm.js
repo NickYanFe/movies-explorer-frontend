@@ -9,11 +9,10 @@ function SearchForm() {
     navigate("/movies");
   }
   return (
-    <section className="searchform__panel">
+    <section className="searchform">
       <form
         placeholder="Фильмы"
         className="searchform__placeholder"
-        noValidate
         onSubmit={handleSubmit}
         action="#"
       >
@@ -32,7 +31,7 @@ function SearchForm() {
         />
         <button className="searchform__button button" type="submit" />
       </form>
-      <div className="shorts__container ">
+      <div className="shorts ">
         <input className="shorts__button" type="checkbox" id="switch" />
         <label for="switch" />
         <p className="searchform__shorts">Короткометражки</p>

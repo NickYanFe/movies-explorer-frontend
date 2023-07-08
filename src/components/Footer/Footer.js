@@ -8,7 +8,25 @@ function Footer() {
       </h2>
       <div className="footer__copyright">
         <p className="footer-year">&#169; {new Date().getFullYear()}</p>
-        <ul className="footer__links">
+        <nav className="footer__links">
+          <a
+            href="https://practicum.yandex.ru/"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link button link"
+          >
+            Яндекс.Практикум
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noreferrer"
+            className="footer-link button link"
+          >
+            Github
+          </a>
+        </nav>
+        {/* <ul className="footer__links">
           <li className="footer-link" src="">
             <a
               href="https://practicum.yandex.ru/"
@@ -30,7 +48,7 @@ function Footer() {
               Github
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </footer>
   );

@@ -4,7 +4,7 @@ import kusto1 from "../../../images/kusto1.jpg";
 function AboutMe() {
   return (
     <section className="aboutme" id="aboutme">
-      <h2 className="aboutproject__header aboutme__header">Студент</h2>
+      <h2 className="aboutme__header">Студент</h2>
       <div className="aboutme__content">
         <div className="aboutme__info">
           <h3 className="aboutme__name">Виталий</h3>{" "}

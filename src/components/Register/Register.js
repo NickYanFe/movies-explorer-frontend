@@ -52,7 +52,7 @@ function Register({ onLoading, onRegister, isLoggedIn }) {
         value={name}
         inputfigcaption={"Имя"}
       />
-      <span className="auth__error">Что-то пошло не так...</span>
+      <span className="auth-error">Что-то пошло не так...</span>
       <legend className="auth__input-figcaption">E-mail</legend>
       <input
         name="email"
@@ -65,7 +65,7 @@ function Register({ onLoading, onRegister, isLoggedIn }) {
         onChange={handleEmailChange}
         value={email}
       />
-      <span className="auth__error">Что-то пошло не так...</span>
+      <span className="auth-error">Что-то пошло не так...</span>
       <legend className="auth__input-figcaption">Пароль</legend>
       <input
         name="password"
@@ -78,7 +78,7 @@ function Register({ onLoading, onRegister, isLoggedIn }) {
         onChange={handlePasswordChange}
         value={password}
       />
-      <span className="auth__error">Что-то пошsdfsdfло не так...</span>
+      <span className="auth-error">Что-то пошло не так...</span>
     </AuthForm>
   );
 }

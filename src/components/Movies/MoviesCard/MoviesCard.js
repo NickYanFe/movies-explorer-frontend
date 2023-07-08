@@ -12,7 +12,7 @@ function MoviesCard({ isSavedMovies, movie }) {
   };
 
   return (
-    <section className="moviescard">
+    <section className="movie">
       <div className="movie__image-wrapper">
         <img className="movie__image" alt={movie.title} src={movie.image} />
       </div>

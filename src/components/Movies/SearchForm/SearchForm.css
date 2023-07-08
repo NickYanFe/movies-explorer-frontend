@@ -1,4 +1,4 @@
-.searchform__panel {
+.searchform {
   max-width: 1140px;
   margin: 0 auto;
   margin-top: 70px;
@@ -47,7 +47,7 @@
   overflow: hidden;
 }
 
-.shorts__container {
+.shorts {
   display: flex;
 }
 
@@ -121,7 +121,7 @@ input:checked + label:after {
 }
 
 @media screen and (max-width: 768px) {
-  .searchform__panel {
+  .searchform {
     max-width: 708px;
     width: 100%;
     margin-top: 80px;
@@ -141,8 +141,8 @@ input:checked + label:after {
   margin-left: 20px;
 }
 
-@media screen and (max-width: 320px) {
-  .searchform__panel {
+@media screen and (max-width: 430px) {
+  .searchform {
     max-width: 300px;
     margin: 0 auto;
     margin-top: 80px;
@@ -163,7 +163,7 @@ input:checked + label:after {
     font-size: 14px;
     margin-left: 19px;
   }
-  .shorts__container {
+  .shorts {
     margin: auto;
     margin-top: 35px;
   }

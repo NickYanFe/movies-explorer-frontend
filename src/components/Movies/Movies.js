@@ -16,11 +16,9 @@ function Movies() {
   return (
     <section className="movies">
       <Header isLoggedIn={true} />
-      <main>
-        <SearchForm />
-        <MoviesCardlist moviesList={allInitialMovies} />
-        <Preloader />
-      </main>
+      <SearchForm />
+      <MoviesCardlist moviesList={allInitialMovies} />
+      <Preloader />
       <Footer />
     </section>
   );

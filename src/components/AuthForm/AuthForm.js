@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 function AuthForm(props) {
   return (
     <>
-      <form className="auth__form" noValidate onSubmit={props.onSubmit}>
+      <form className="auth" onSubmit={props.onSubmit}>
         <img className="auth__logo" src={logo} alt=" Логотип." />
         <h1 className="auth__header">{`${props.title}`}</h1>
         <div className="auth__container">{props.children}</div>
