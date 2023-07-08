@@ -1,0 +1,226 @@
+.aboutproject {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  margin: auto;
+  margin-top: 110px;
+  max-width: 1140px;
+  padding-bottom: 100px;
+  padding-left: 2px;
+}
+
+.aboutproject__header {
+  margin: 0 auto;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26.63px;
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 23px;
+  max-width: 1140px;
+  width: 100%;
+  letter-spacing: -0.88px;
+}
+.aboutproject__content {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.aboutproject__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  letter-spacing: -0.8px;
+}
+
+.aboutproject__description {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 26px;
+  max-width: 550px;
+}
+
+.aboutproject__timescale {
+  margin-top: 112px;
+  display: flex;
+  flex-direction: row;
+  max-width: 1140px;
+  height: 36px;
+  width: 100%;
+  align-self: center;
+}
+
+.aboutproject__timescale:last-of-type {
+  margin-top: 7px;
+}
+
+.aboutproject__oneweek {
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  max-width: 228px;
+  height: 36px;
+  background-color: #3ddc84;
+  box-sizing: border-box;
+  width: calc(20%);
+  padding-top: 9px;
+}
+
+.aboutproject__diploma {
+  max-width: 550px;
+  width: 100%;
+}
+.aboutproject__fourweeks {
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  max-width: 912px;
+  height: 36px;
+  background-color: #303030;
+  box-sizing: border-box;
+  width: calc(80%);
+  padding-top: 9px;
+}
+
+.aboutproject__figcaption {
+  margin: 0;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  background-color: #202020;
+  margin-top: 7px;
+  padding-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutproject {
+    margin-top: 80px;
+    max-width: 668px;
+    width: 100%;
+    padding-bottom: 90px;
+  }
+
+  .aboutproject__header {
+    max-width: 668px;
+    width: 100%;
+    letter-spacing: -0.88px;
+  }
+
+  .aboutproject__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 22px;
+  }
+
+  .aboutproject__diploma {
+    max-width: 319px;
+    width: 100%;
+  }
+
+  .aboutproject__content {
+    gap: 30px;
+  }
+  .aboutproject__timescale {
+    margin-top: 93px;
+    max-width: 670px;
+    height: 36px;
+    width: 100%;
+    /* padding-left: 2px; */
+  }
+
+  .aboutproject__fourweeks {
+    max-width: 528px;
+  }
+  .aboutproject__oneweek {
+    max-width: 140px;
+  }
+
+  .aboutproject__figcaption {
+    margin-top: 7px;
+    padding-left: 4px;
+  }
+
+  .aboutproject__timescale:last-of-type {
+    padding-left: 4px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutproject {
+    padding-bottom: 70px;
+    margin-top: 65px;
+    padding-left: 0;
+  }
+
+  .aboutproject__header {
+    font-size: 18px;
+    padding-bottom: 28px;
+    max-width: 284px;
+    width: 100%;
+    letter-spacing: -0.72px;
+  }
+
+  .aboutproject__content {
+    margin: auto;
+    margin-top: 55px;
+    display: flex;
+    flex-direction: column;
+    max-width: 284px;
+    width: 100%;
+    gap: 56px;
+  }
+
+  .aboutproject__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+  }
+  .aboutproject__description {
+    font-size: 11px;
+    max-width: 284px;
+    margin-top: 10px;
+  }
+  .aboutproject__timescale {
+    margin: auto;
+    margin-top: 60px;
+    max-width: 284px;
+    height: 35px;
+    width: 100%;
+  }
+
+  .aboutproject__oneweek {
+    font-size: 11px;
+    width: calc(35%);
+  }
+
+  .aboutproject__fourweeks {
+    font-size: 11px;
+    width: calc(65%);
+  }
+
+  .aboutproject__timescale {
+    margin-top: 60px;
+  }
+
+  .aboutproject__figcaption {
+    margin-top: 2px;
+    font-size: 11px;
+    padding-left: 0;
+  }
+  .aboutproject__timescale:last-of-type {
+    margin-top: 2px;
+    padding-left: 0;
+  }
+}

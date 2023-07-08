@@ -1,0 +1,22 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 400;
+  line-height: 58px;
+  color: #ffffff;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  margin-top: 74px;
+}
+.register__header {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.05px;
+}

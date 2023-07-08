@@ -1,0 +1,131 @@
+.header {
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-top: 18px;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.header__logo {
+  min-width: 38px;
+  height: 38px;
+  align-self: center;
+  object-fit: cover;
+  display: block;
+  box-sizing: border-box;
+}
+
+.header__navigation {
+  max-width: 766px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header__moviesbox {
+  padding-left: 90px;
+  display: flex;
+  gap: 16px;
+  color: #ffffff;
+  align-self: center;
+}
+
+.header__movies {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+  box-sizing: content-box;
+}
+
+.header__profile {
+  width: 100px;
+  height: 30px;
+  align-self: center;
+}
+
+.header__menu {
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  list-style: none;
+  align-self: center;
+  gap: 10px;
+}
+
+.header__authbutton {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  padding-top: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 8px;
+}
+
+.header__authbutton:hover {
+  color: #000000;
+  background-color: #3ddc84;
+  border-radius: 3px;
+}
+
+.header__burger {
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  align-self: center;
+  background-color: transparent;
+  border: none;
+  display: none;
+  background-image: url(../../images/burgermenu.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 768px) {
+  .header__burger {
+    display: block;
+  }
+
+  .header__profile {
+    display: none;
+  }
+  .header__moviesbox {
+    display: none;
+  }
+
+  .header__navigation {
+    justify-content: flex-end;
+  }
+  .header {
+    max-width: 708px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    max-width: 292px;
+  }
+
+  .header__menu {
+    gap: 2px;
+  }
+  .header__authbutton {
+    font-size: 10px;
+    padding-top: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+  }
+
+  .header__burger {
+    width: 40px;
+    height: 43px;
+    background-size: 36px 43px;
+  }
+}
