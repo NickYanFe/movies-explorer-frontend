@@ -1,25 +1,162 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import SearchForm from "../Movies/SearchForm/SearchForm";
-import MoviesCardlist from "./MoviesCardList/MoviesCardList";
 import Preloader from "./Preloader/Preloader";
-import initialMovies from "../../utils/initialMovies";
+import moviesApi from "../../utils/MoviesApi";
+import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import InfoToolTip from "../InfoToolTip/Infotooltip";
 
-function Movies() {
-  const [allInitialMovies, setAllInitialMovies] = React.useState([]);
+function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
+  const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(null);
+  const [infoToolTipData, setInfoToolTipData] = useState({
+    title: "",
+    logo: "",
+  });
 
-  React.useEffect(() => {
-    setAllInitialMovies(initialMovies);
+  function closeInfoToolTip() {
+    setIsInfoToolTipOpen(null);
+  }
+
+  const isAnyPopupOpened = isInfoToolTipOpen;
+
+  useEffect(() => {
+    function closeAllPopupsEscapeClick(evt) {
+      if (evt.key === "Escape") {
+        closeInfoToolTip();
+      }
+    }
+    if (isAnyPopupOpened) {
+      document.addEventListener("keydown", closeAllPopupsEscapeClick);
+      return () => {
+        document.removeEventListener("keydown", closeAllPopupsEscapeClick);
+      };
+    }
+  }, [isAnyPopupOpened]);
+
+  const closeAllPopupsOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeInfoToolTip();
+    }
+  };
+  const [allMovies, setAllMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [isShortMovies, setIsShortMovies] = useState(false);
+  const [searchMovieText, setSearchMovieText] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  function filterMovies(allMovies, searchMovieText, isShortMovies) {
+    if (searchMovieText === "") {
+      localStorage.setItem("searchMovieText", searchMovieText);
+      localStorage.setItem("isShortMovies", JSON.stringify(isShortMovies));
+      localStorage.setItem("filteredMovies", JSON.stringify([]));
+      return [];
+    }
+
+    localStorage.setItem("searchMovieText", searchMovieText);
+    localStorage.setItem("isShortMovies", JSON.stringify(isShortMovies));
+
+    const filteredMovies = allMovies.filter((item) =>
+      item.nameRU.toLowerCase().includes(searchMovieText.toLowerCase())
+    );
+
+    if (isShortMovies) {
+      const filteredShortMovies = filteredMovies.filter(
+        (item) => item.duration <= 40
+      );
+      localStorage.setItem(
+        "filteredMovies",
+        JSON.stringify(filteredShortMovies)
+      );
+      return filteredShortMovies;
+    } else {
+      localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies));
+      return filteredMovies;
+    }
+  }
+
+  function checkboxToggle(event) {
+    const newValue = event.target.checked;
+    setIsShortMovies(newValue);
+    const filteredMovies = filterMovies(allMovies, searchMovieText, newValue);
+    setFilteredMovies(filteredMovies);
+    localStorage.setItem("isShortMovies", String(newValue));
+  }
+
+  function searchButtonClick() {
+    const filteredMovies = filterMovies(
+      allMovies,
+      searchMovieText,
+      isShortMovies
+    );
+    setFilteredMovies(filteredMovies);
+    console.log(filteredMovies);
+  }
+
+  useEffect(() => {
+    const query = localStorage.getItem("searchMovieText");
+    const storageMovies = localStorage.getItem("filteredMovies");
+    const storageShortMovies = localStorage.getItem("isShortMovies");
+    const storageAllMovies = localStorage.getItem("allMovies");
+    if (query && storageMovies && storageShortMovies && storageAllMovies) {
+      setSearchMovieText(query);
+      setIsShortMovies(storageShortMovies === "true");
+      setFilteredMovies(JSON.parse(storageMovies));
+      setAllMovies(JSON.parse(storageAllMovies));
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+      moviesApi
+        .getMovies()
+        .then((data) => {
+          localStorage.setItem("allMovies", JSON.stringify(data));
+          setAllMovies(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, []);
 
   return (
     <section className="movies">
       <Header isLoggedIn={true} />
-      <SearchForm />
-      <MoviesCardlist moviesList={allInitialMovies} />
-      <Preloader />
+      <main>
+        <section className="movies">
+          <SearchForm
+            searchMovieText={searchMovieText}
+            setSearchMovieText={setSearchMovieText}
+            onSubmit={searchButtonClick}
+            isShortMovies={isShortMovies}
+            checkboxToggle={checkboxToggle}
+          />
+          {isLoading ? (
+            <Preloader />
+          ) : (
+            <MoviesCardList
+              movies={filteredMovies}
+              savedMovies={savedMovies}
+              handleSaveMovie={handleSaveMovie}
+              handleDeleteMovie={handleDeleteMovie}
+            />
+          )}
+          {filteredMovies.length === 0 && searchMovieText !== "" && (
+            <p className="search-span">Ничего не найдено</p>
+          )}
+          {searchMovieText === "" && (
+            <p className="search-span">Введите ключевое слово для поиска</p>
+          )}
+        </section>
+      </main>
       <Footer />
+      <InfoToolTip
+        isOpen={isInfoToolTipOpen}
+        title={infoToolTipData.title}
+        logo={infoToolTipData.logo}
+        buttonText={""}
+        onClose={closeInfoToolTip}
+        onOverlayClose={closeAllPopupsOverlayClick}
+      />
     </section>
   );
 }

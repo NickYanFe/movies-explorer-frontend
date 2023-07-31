@@ -51,6 +51,15 @@
   display: flex;
 }
 
+.search-span {
+  /* margin: auto; */
+  font-size: 33px;
+  font-weight: 500;
+  line-height: 35px;
+  color: #ffffff;
+  text-align: center;
+}
+
 .searchform__shorts {
   font-size: 13px;
   font-weight: 400;

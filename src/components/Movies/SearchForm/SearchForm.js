@@ -1,20 +1,29 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import search_icon from "../../../images/search_icon.svg";
 
-function SearchForm() {
-  const navigate = useNavigate();
+function SearchForm(props) {
+  const { onSubmit, isShortMovies, setSearchMovieText, checkboxToggle } = props;
+
+  const [searchText, setSearchText] = React.useState("");
+
+  function handleChange(event) {
+    if (setSearchMovieText) {
+      setSearchMovieText(event.target.value);
+    }
+    setSearchText(event.target.value);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    navigate("/movies");
+    onSubmit(searchText);
   }
+
   return (
     <section className="searchform">
       <form
         placeholder="Фильмы"
         className="searchform__placeholder"
         onSubmit={handleSubmit}
-        action="#"
       >
         <img
           src={search_icon}
@@ -28,11 +37,18 @@ function SearchForm() {
           placeholder="Фильм"
           required
           id="searchform__input"
+          onChange={handleChange}
         />
         <button className="searchform__button button" type="submit" />
       </form>
-      <div className="shorts ">
-        <input className="shorts__button" type="checkbox" id="switch" />
+      <div className="shorts">
+        <input
+          className="shorts__button"
+          type="checkbox"
+          id="switch"
+          checked={isShortMovies}
+          onChange={checkboxToggle}
+        />
         <label for="switch" />
         <p className="searchform__shorts">Короткометражки</p>
       </div>

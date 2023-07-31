@@ -7,10 +7,10 @@ import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
-function Main() {
+function Main(props) {
   return (
     <section className="main">
-      <Header isLoggedIn={false} />
+      <Header isLoggedIn={props.isLoggedIn} />
       <Promo />
       <AboutProject />
       <Tech />

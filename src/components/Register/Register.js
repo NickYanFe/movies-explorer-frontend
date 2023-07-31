@@ -1,84 +1,71 @@
 import React from "react";
 import AuthForm from "../AuthForm/AuthForm";
-import { useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../utils/useFormValidation";
 
-function Register({ onLoading, onRegister, isLoggedIn }) {
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const navigate = useNavigate();
+function Register({ onRegister }) {
+  const { isValid, handleChange, values, errors } = useFormValidation();
 
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
-  }
-
-  function handleNameChange(evt) {
-    setName(evt.target.value);
-  }
-
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-  }
-
-  function handleSubmit(e) {
+  function handleRegister(e) {
     e.preventDefault();
-    navigate("/movies");
-  }
-
-  if (isLoggedIn) {
-    return <redirect to="/" />;
+    onRegister({
+      name: values.name,
+      email: values.email,
+      password: values.password,
+    });
   }
 
   return (
     <AuthForm
-      name={"register"}
+      name="register"
       title={"Добро пожаловать!"}
-      buttonText={onLoading ? "Регистрирую" : "Зарегистрироваться"}
+      buttonText={"Зарегистрироваться"}
       buttonFigcaption={"Уже зарегистрированы?"}
+      buttonClassName={
+        isValid ? "auth__save" : "auth__save auth__save_disabled"
+      }
+      buttonDisabled={!isValid}
       figcaptionlink="/signin"
       figcaptionRedirectToLogin={"Войти"}
-      onSubmit={handleSubmit}
+      onSubmit={handleRegister}
     >
       <legend className="auth__input-figcaption">Имя</legend>
       <input
         name="name"
         type="text"
+        id="name-input"
         className="auth__input"
-        placeholder=""
         required
         minLength="2"
         maxLength="30"
-        onChange={handleNameChange}
-        value={name}
+        value={values.name || ""}
+        onChange={handleChange}
         inputfigcaption={"Имя"}
       />
-      <span className="auth-error">Что-то пошло не так...</span>
+      <span className="auth-error">{errors.name}</span>
       <legend className="auth__input-figcaption">E-mail</legend>
       <input
         name="email"
         type="email"
+        id="email-input"
         className="auth__input"
-        placeholder=""
         required
         minLength="2"
         maxLength="30"
-        onChange={handleEmailChange}
-        value={email}
+        value={values.email || ""}
+        onChange={handleChange}
       />
-      <span className="auth-error">Что-то пошло не так...</span>
+      <span className="auth-error">{errors.email}</span>
       <legend className="auth__input-figcaption">Пароль</legend>
       <input
         name="password"
         type="password"
         className="auth__input"
-        placeholder=""
+        id="password-input"
         required
-        minLength="2"
-        maxLength="30"
-        onChange={handlePasswordChange}
-        value={password}
+        value={values.password || ""}
+        onChange={handleChange}
       />
-      <span className="auth-error">Что-то пошло не так...</span>
+      <span className="auth-error">{errors.password}</span>
     </AuthForm>
   );
 }

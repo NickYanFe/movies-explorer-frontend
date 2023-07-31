@@ -1,42 +1,47 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 import Header from "../Header/Header";
-function Profile() {
-  const buttonText = "Редактировать";
+import { useFormValidation } from "../../utils/useFormValidation";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-  function profileEdit(e) {
+function Profile({ onUpdateUser, onSignOut }) {
+  const { isValid, setValues, values, errors, handleChange, setIsValid } =
+    useFormValidation();
+
+  const currentUser = useContext(CurrentUserContext);
+  const [isEditing, setIsEditing] = useState(false);
+
+    function handleSubmit(e) {
     e.preventDefault();
-    const inputs = document.querySelectorAll(".profile__input");
-    const button = document.querySelector(".profile__edit");
-    inputs.forEach(function (input) {
-      if (input.disabled) {
-        input.disabled = false;
-        button.innerText = "Сохранить";
-      } else {
-        input.disabled = true;
-        button.innerText = "Редактировать";
-      }
+    onUpdateUser({
+      name: values.name,
+      email: values.email,
     });
+    setIsEditing(false);
   }
-  const navigate = useNavigate();
 
-  function onSignOut(e) {
-    e.preventDefault();
-    navigate("/signin");
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser);
+      setIsValid(true);
+    }
+  }, [currentUser, setIsValid, setValues]);
+
+  function editUserData() {
+    setIsEditing(true);
   }
 
   return (
     <section className="profile">
       <Header isLoggedIn={true} />
       <main className="profile__container">
-        <h1 className="profile__title">Привет, Виталий!</h1>
+        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
 
-        <form className="profile__form">
+        <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__line">
             <label className="profile__fieldname">Имя</label>
             <input
               className="profile__input"
-              defaultValue="Виталий"
               name="name"
               type="text"
               placeholder="name"
@@ -44,27 +49,49 @@ function Profile() {
               maxLength="40"
               required
               id="input"
-              disabled
+              disabled={!isEditing}
+              value={values.name || ""}
+              onChange={handleChange}
             />
           </div>
-          <span className="auth-error">Что-то пошло не так...</span>
+          <span className="auth-error">{errors.name}</span>
           <div className="profile__line">
             <label className="profile__fieldname">E-mail</label>
             <input
               className="profile__input"
-              defaultValue="pochta@yandex.ru"
               name="email"
               type="email"
               placeholder="email"
               required
               id="input1"
-              disabled
+              disabled={!isEditing}
+              value={values.email || ""}
+              onChange={handleChange}
             />
           </div>
-          <span className="auth-error">Что-то пошло не так...</span>
-          <button className="profile__edit button link" onClick={profileEdit}>
-            {buttonText}
-          </button>
+          <span className="auth-error">{errors.email}</span>
+          {isEditing ? (
+            <button
+              type="submit"
+              className="profile__edit button link"
+              disabled={
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+              }
+            >
+              Сохранить
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="profile__edit button link"
+              onClick={editUserData}
+            >
+              Редактировать
+            </button>
+          )}
+
           <button className="profile__signout button" onClick={onSignOut}>
             Выйти из аккаунта
           </button>

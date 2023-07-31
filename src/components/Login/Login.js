@@ -1,67 +1,58 @@
 import AuthForm from "../AuthForm/AuthForm";
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { useFormValidation } from "../../utils/useFormValidation";
 
-function Login({ isLoggedIn, onLogin, onLoading }) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const navigate = useNavigate();
+function Login({ onLogin }) {
+  const { isValid, handleChange, values, errors } = useFormValidation();
 
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
-  }
-
-  function handleEmailChange(evt) {
-    setEmail(evt.target.value);
-  }
-
-  function handleSubmit(e) {
+  function handleLogin(e) {
     e.preventDefault();
-    navigate("/movies");
-  }
-
-  if (isLoggedIn) {
-    return <redirect to="/" />;
+    onLogin({
+      email: values.email,
+      password: values.password,
+    });
   }
 
   return (
     <AuthForm
       name={"Login"}
       title={"Рады видеть!"}
-      buttonText={onLoading ? "Вхожу" : "Войти"}
+      buttonText={"Войти"}
       buttonFigcaption={"Еще не зарегистрированы?"}
+      buttonClassName={
+        isValid ? "auth__save" : "auth__save auth__save_disabled"
+      }
+      buttonDisabled={!isValid}
       figcaptionlink="/signup"
       figcaptionRedirectToLogin={"Регистрация"}
-      onSubmit={handleSubmit}
+      onSubmit={handleLogin}
     >
       <legend className="auth__input-figcaption">E-mail</legend>
       <input
-        name="Email"
+        name="email"
         type="email"
+        id="email-input"
         className="auth__input"
-        placeholder=""
         required
-        minLength="2"
-        maxLength="30"
-        onChange={handleEmailChange}
-        value={email}
+        value={values.email || ""}
+        onChange={handleChange}
       />
-      <span className="auth-error">Что-то пошло не так...</span>
+      <span className="auth-error">{errors.email}</span>
 
       <legend className="auth__input-figcaption">Пароль</legend>
       <input
-        name="Password"
+        name="password"
         type="password"
+        id="password-input"
         className="auth__input"
         placeholder=""
         required
-        minLength="2"
-        maxLength="30"
-        onChange={handlePasswordChange}
-        value={password}
+        value={values.password || ""}
+        onChange={handleChange}
       />
-      <span className="auth-error">Что-то пошло не так...</span>
+
+      <span className="auth-error">{errors.password}</span>
     </AuthForm>
   );
 }

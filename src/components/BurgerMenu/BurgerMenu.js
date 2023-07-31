@@ -1,5 +1,4 @@
 import React from "react";
-import burgermenu from "../../images/burgermenu.svg";
 import { useState } from "react";
 import profile from "../../images/profile.svg";
 import { Link } from "react-router-dom";

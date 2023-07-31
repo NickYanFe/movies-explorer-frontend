@@ -33,6 +33,7 @@
   color: #fff;
   text-align: center;
   font-size: 12px;
+  align-self: center;
 }
 
 @media screen and (max-width: 768px) {

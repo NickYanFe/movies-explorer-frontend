@@ -44,3 +44,5 @@ code {
 @import url(./components/ErrorPage/ErrorPage.css);
 @import url(./components/constants/constants.css);
 @import url(./components/BurgerMenu/BurgerMenu.css);
+
+@import url(./components/InfoToolTip/Infotooltip.css);

@@ -85,6 +85,13 @@
   margin-bottom: 19px;
 }
 
+.auth__save_disabled {
+  color: #c2c2c2;
+  pointer-events: none;
+  background-color: #f8f8f8;
+  /* opacity: 0.2; */
+}
+
 .auth__save:hover {
   opacity: 80%;
 }
@@ -113,12 +120,12 @@
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  visibility: hidden;
-}
-
-.auth-error-active {
   visibility: visible;
 }
+
+/* .auth-error-active {
+  visibility: visible;
+} */
 
 @media screen and (max-width: 450px) {
   .auth {

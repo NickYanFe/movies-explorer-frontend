@@ -1,22 +1,23 @@
 import React from "react";
+import { Link } from "react-scroll";
 
 function NavTab() {
   return (
     <ul className="navtab">
       <li className="navtab__element button">
-        <a className="link" href="#aboutproject">
+        <Link className="link" smooth="true" duration="500" to="aboutproject">
           О проекте
-        </a>
+        </Link>
       </li>
       <li className="navtab__element button">
-        <a className="link" href="#tech">
+        <Link className="link" smooth="true" duration="500" to="tech">
           Технологии
-        </a>
+        </Link>
       </li>
       <li className="navtab__element button">
-        <a className="link" href="#aboutme">
+        <Link className="link" smooth="true" duration="500" to="aboutme">
           Студент
-        </a>
+        </Link>
       </li>
     </ul>
   );
