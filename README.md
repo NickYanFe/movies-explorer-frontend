@@ -5,3 +5,7 @@
 
 https://disk.yandex.ru/d/ffHD9QhJ1F54Wg
 
+# Ссылка на сайт:
+
+http://nickyanfediploma.nomoredomains.rocks/
+
