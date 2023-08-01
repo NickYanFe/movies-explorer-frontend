@@ -9,3 +9,7 @@ https://disk.yandex.ru/d/ffHD9QhJ1F54Wg
 
 http://nickyanfediploma.nomoredomains.rocks/
 
+# Pull request
+
+https://github.com/NickYanFe/movies-explorer-frontend/pull/2
+
