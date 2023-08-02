@@ -169,9 +169,9 @@ function App() {
 
   function handleSignOut() {
     localStorage.clear();
-    navigate("/");
     setIsLoggedIn(false);
     setCurrentUser({ name: "", email: "" });
+    navigate("/");
   }
 
   function handleUserUpdate(inputData) {
