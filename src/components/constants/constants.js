@@ -7,19 +7,19 @@ export const BEATFILM_config = {
   // }
 };
 
-// export const mainApiConfig = {
-//     baseURL: 'https://api.nickyanfediploma.nomoredomains.rocks',
-// //     // headers: {
-// //     //   'Content-Type': 'application/json',
-// //     // }
-// };
-
 export const mainApiConfig = {
-  baseURL: "http://localhost:3001",
-  // headers: {
-  //   'Content-Type': 'application/json',
-  // }
+    baseURL: 'https://api.nickyanfediploma.nomoredomains.rocks',
+//     // headers: {
+//     //   'Content-Type': 'application/json',
+//     // }
 };
+
+// export const mainApiConfig = {
+//   baseURL: "http://localhost:3001",
+//   // headers: {
+//   //   'Content-Type': 'application/json',
+//   // }
+// };
 
 export const PATTERN_EMAIL = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.{1,1}[a-z]{2,}";
 
