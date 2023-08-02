@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import Preloader from "../Preloader/Preloader";
 
 import {
   DESKTOP_WIDTH_SIZE,

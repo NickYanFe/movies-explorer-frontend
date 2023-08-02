@@ -7,19 +7,19 @@ export const BEATFILM_config = {
   // }
 };
 
-export const mainApiConfig = {
-    baseURL: 'https://api.nickyanfediploma.nomoredomains.rocks',
-//     // headers: {
-//     //   'Content-Type': 'application/json',
-//     // }
-};
-
 // export const mainApiConfig = {
-//   baseURL: "http://localhost:3001",
-//   // headers: {
-//   //   'Content-Type': 'application/json',
-//   // }
+//     baseURL: 'https://api.nickyanfediploma.nomoredomains.rocks',
+// //     // headers: {
+// //     //   'Content-Type': 'application/json',
+// //     // }
 // };
+
+export const mainApiConfig = {
+  baseURL: "http://localhost:3001",
+  // headers: {
+  //   'Content-Type': 'application/json',
+  // }
+};
 
 export const PATTERN_EMAIL = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.{1,1}[a-z]{2,}";
 
@@ -35,3 +35,7 @@ export const MOBILE_CARDS_COUNT = 5;
 export const MORE_CARDS_COUNT = 2;
 
 export const SHORTS_DURATION = 40;
+
+export const NOT_FOUND_RESULTS = "Ничего не найдено"
+
+export const ENTER_SEARCH_TEXT = "Введите ключевое слово для поиска"

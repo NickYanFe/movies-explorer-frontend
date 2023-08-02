@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import SearchForm from "../Movies/SearchForm/SearchForm";
-import Preloader from "./Preloader/Preloader";
 import moviesApi from "../../utils/MoviesApi";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import InfoToolTip from "../InfoToolTip/Infotooltip";
+import { SHORTS_DURATION } from "../constants/constants";
+import { NOT_FOUND_RESULTS, ENTER_SEARCH_TEXT } from "../constants/constants";
+
 
 function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(null);
@@ -62,7 +64,7 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
 
     if (isShortMovies) {
       const filteredShortMovies = filteredMovies.filter(
-        (item) => item.duration <= 40
+        (item) => item.duration <= SHORTS_DURATION
       );
       localStorage.setItem(
         "filteredMovies",
@@ -130,21 +132,19 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
             isShortMovies={isShortMovies}
             checkboxToggle={checkboxToggle}
           />
-          {isLoading ? (
-            <Preloader />
-          ) : (
+     
             <MoviesCardList
               movies={filteredMovies}
               savedMovies={savedMovies}
               handleSaveMovie={handleSaveMovie}
               handleDeleteMovie={handleDeleteMovie}
             />
-          )}
+         
           {filteredMovies.length === 0 && searchMovieText !== "" && (
-            <p className="search-span">Ничего не найдено</p>
+            <p className="search-span">{NOT_FOUND_RESULTS}</p>
           )}
           {searchMovieText === "" && (
-            <p className="search-span">Введите ключевое слово для поиска</p>
+            <p className="search-span">{ENTER_SEARCH_TEXT}</p>
           )}
         </section>
       </main>
