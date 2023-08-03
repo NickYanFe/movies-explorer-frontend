@@ -141,31 +141,23 @@ function App() {
       mainApi
         .getUserInfo()
         .then((data) => {
-          setCurrentUser(data);
+          setCurrentUser(data.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-    if (!token) {
-      setIsTokenChecked(true);
-      return;
-    }
     mainApi
       .checkToken(token)
-      .then((res) => {
-        if (res) {
-          setIsTokenChecked(true);
-          setCurrentUser(res.data);
-          setIsLoggedIn(true);
-        }
+      .then(() => {
+        setIsLoggedIn(true);
       })
       .catch((err) => console.log(err));
-  }, [isLoggedIn, currentUser, isTokenChecked]);
+  }, [isTokenChecked]);
 
   function handleSignOut() {
     localStorage.clear();
@@ -181,7 +173,7 @@ function App() {
       .setUserInfo(inputData)
       .then((res) => {
         console.log(res);
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         setInfoToolTipData({
           logo: RegistrationSuccess,
           title: "Данные пользователя успешно обновлены!",

@@ -31,11 +31,32 @@ function Profile({ onUpdateUser, onSignOut }) {
     setIsEditing(true);
   }
 
+  useEffect(() => {
+    if (!isEditing) {
+      setValues({
+        name: currentUser.name,
+        email: currentUser.email,
+      });
+    }
+  }, [currentUser, isEditing, setValues]);
+
+  function checkDataChanged() {
+    if (values.name !== currentUser.name || values.email !== currentUser.email) {
+      setIsEditing(true);
+    } else {
+      setIsEditing(false);
+    }
+  }
+
+  useEffect(() => {
+    checkDataChanged();
+  }, [values]);
+
   return (
     <section className="profile">
       <Header isLoggedIn={true} />
       <main className="profile__container">
-        <h1 className="profile__title">Привет, {currentUser.name}!</h1>
+          <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
 
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__line">
