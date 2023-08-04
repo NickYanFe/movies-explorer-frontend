@@ -6,7 +6,9 @@ function AuthForm(props) {
   return (
     <>
       <form className="auth" onSubmit={props.onSubmit}>
-        <img className="auth__logo" src={logo} alt=" Логотип." />
+        <Link to="/" className="auth__logo button">
+          <img src={logo} alt=" Логотип." />
+        </Link>
         <h1 className="auth__header">{`${props.title}`}</h1>
         <div className="auth__container">{props.children}</div>
 
