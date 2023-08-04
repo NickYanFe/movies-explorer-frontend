@@ -61,7 +61,7 @@ function App() {
   };
 
   function handleRegisterUser({ name, email, password }) {
-    setIsLoading(true);
+    // setIsLoading(true);
     mainApi
       .register(name, email, password)
       .then((userData) => {
@@ -87,7 +87,7 @@ function App() {
   }
 
   function handleSignin({ email, password }) {
-    setIsLoading(true);
+    // setIsLoading(true);
     mainApi
       .signin(email, password)
       .then((data) => {
@@ -110,7 +110,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
         handleOpenInfoToolTipPopup(true);
       });
   }
@@ -168,7 +168,7 @@ function App() {
 
   function handleUserUpdate(inputData) {
     console.log("inputData handleuserupdate=> ", inputData);
-    setIsLoading(true);
+    // setIsLoading(true);
     mainApi
       .setUserInfo(inputData)
       .then((res) => {
@@ -187,7 +187,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
         handleOpenInfoToolTipPopup();
       });
   }
@@ -212,7 +212,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
         handleOpenInfoToolTipPopup(true);
       });
   }
@@ -233,7 +233,7 @@ function App() {
         console.log(err);
       })
       .finally(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
         handleOpenInfoToolTipPopup(true);
       });
   }
@@ -254,6 +254,7 @@ function App() {
                       savedMovies={savedMovies}
                       handleSaveMovie={handleSaveMovie}
                       handleDeleteMovie={handleDeleteMovie}
+                      isLoading={isLoading}
                     />
                   }
                 />
@@ -286,7 +287,7 @@ function App() {
                     <Register
                       onRegister={handleRegisterUser}
                       isLoggedIn={isLoggedIn}
-                      isLoading={isLoading}
+                      // isLoading={isLoading}
                     />
                   }
                 />
@@ -296,7 +297,7 @@ function App() {
                     <Login
                       onLogin={handleSignin}
                       isLoggedIn={isLoggedIn}
-                      isLoading={isLoading}
+                      // isLoading={isLoading}
                     />
                   }
                 />

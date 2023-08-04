@@ -7,6 +7,7 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import InfoToolTip from "../InfoToolTip/Infotooltip";
 import { SHORTS_DURATION } from "../constants/constants";
 import { NOT_FOUND_RESULTS, ENTER_SEARCH_TEXT } from "../constants/constants";
+import Preloader from "./Preloader/Preloader";
 
 function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(null);
@@ -44,8 +45,7 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [isShortMovies, setIsShortMovies] = useState(false);
   const [searchMovieText, setSearchMovieText] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [preloader, setPreloader] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function filterMovies(allMovies, searchMovieText, isShortMovies) {
     if (searchMovieText === "") {
@@ -86,13 +86,17 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   }
 
   function searchButtonClick() {
+    setIsLoading(true);
     const filteredMovies = filterMovies(
       allMovies,
       searchMovieText,
       isShortMovies
     );
-    setFilteredMovies(filteredMovies);
-    console.log(filteredMovies);
+  
+    setTimeout(() => {
+      setFilteredMovies(filteredMovies);
+      setIsLoading(false); 
+    }, 1000); 
   }
 
   useEffect(() => {
@@ -105,10 +109,7 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
       setIsShortMovies(storageShortMovies === "true");
       setFilteredMovies(JSON.parse(storageMovies));
       setAllMovies(JSON.parse(storageAllMovies));
-      setIsLoading(false);
-    } else {
-      // setIsLoading(true);
-      setPreloader(true);
+      } else {
       moviesApi
         .getMovies()
         .then((data) => {
@@ -119,7 +120,7 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
           console.log(error);
         })
         .finally(() => {
-          setPreloader(false);
+          setIsLoading(false);
         });
     }
   }, []);
@@ -136,16 +137,16 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
             isShortMovies={isShortMovies}
             checkboxToggle={checkboxToggle}
           />
-
-          <MoviesCardList
-            movies={filteredMovies}
-            savedMovies={savedMovies}
-            handleSaveMovie={handleSaveMovie}
-            handleDeleteMovie={handleDeleteMovie}
-            preloader={preloader}
-          
-          />
-
+          {isLoading ? (
+            <Preloader />
+          ) : (
+            <MoviesCardList
+              movies={filteredMovies}
+              savedMovies={savedMovies}
+              handleSaveMovie={handleSaveMovie}
+              handleDeleteMovie={handleDeleteMovie}
+            />
+          )}
           {filteredMovies.length === 0 && searchMovieText !== "" && (
             <p className="search-span">{NOT_FOUND_RESULTS}</p>
           )}
