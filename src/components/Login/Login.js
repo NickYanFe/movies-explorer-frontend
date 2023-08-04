@@ -4,7 +4,7 @@ import React from "react";
 import { useFormValidation } from "../../utils/useFormValidation";
 
 function Login({ onLogin }) {
-  const { isValid, handleChange, values, errors } = useFormValidation();
+  const { isValid, handleChange, values, errors, validateEmail } = useFormValidation();
 
   function handleLogin(e) {
     e.preventDefault();
@@ -37,6 +37,7 @@ function Login({ onLogin }) {
         required
         value={values.email || ""}
         onChange={handleChange}
+        pattern={validateEmail}
       />
       <span className="auth-error">{errors.email}</span>
 

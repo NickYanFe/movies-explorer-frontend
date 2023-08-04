@@ -21,11 +21,7 @@ export function useFormValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  const validateEmail = (email) => {
-        // const regex = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.{1,1}[a-z]{2,}";
-        const regex = '[a-z0-9]+@[a-z]+\\.{1,1}[a-z]{2,}';
-        return regex.test(email);
-      };
+  const validateEmail = '[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.{1,1}[a-z]{2,}'
 
   return {
     values,

@@ -5,7 +5,7 @@ import { useFormValidation } from "../../utils/useFormValidation";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Profile({ onUpdateUser, onSignOut }) {
-  const { isValid, setValues, values, errors, handleChange, setIsValid } =
+  const { isValid, setValues, values, errors, handleChange, setIsValid, validateEmail } =
     useFormValidation();
 
   const currentUser = useContext(CurrentUserContext);
@@ -88,6 +88,7 @@ function Profile({ onUpdateUser, onSignOut }) {
               disabled={!isEditing}
               value={values.email || ""}
               onChange={handleChange}
+              pattern={validateEmail}
             />
           </div>
           <span className="auth-error">{errors.email}</span>

@@ -3,7 +3,7 @@ import AuthForm from "../AuthForm/AuthForm";
 import { useFormValidation } from "../../utils/useFormValidation";
 
 function Register({ onRegister }) {
-  const { isValid, handleChange, values, errors } = useFormValidation();
+  const { isValid, handleChange, values, errors, validateEmail } = useFormValidation();
 
   function handleRegister(e) {
     e.preventDefault();
@@ -53,6 +53,7 @@ function Register({ onRegister }) {
         maxLength="30"
         value={values.email || ""}
         onChange={handleChange}
+        pattern={validateEmail}
       />
       <span className="auth-error">{errors.email}</span>
       <legend className="auth__input-figcaption">Пароль</legend>
