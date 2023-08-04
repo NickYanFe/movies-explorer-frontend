@@ -5,13 +5,20 @@ import { useFormValidation } from "../../utils/useFormValidation";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Profile({ onUpdateUser, onSignOut }) {
-  const { isValid, setValues, values, errors, handleChange, setIsValid, validateEmail } =
-    useFormValidation();
+  const {
+    isValid,
+    setValues,
+    values,
+    errors,
+    handleChange,
+    setIsValid,
+    validateEmail,
+  } = useFormValidation();
 
   const currentUser = useContext(CurrentUserContext);
   const [isEditing, setIsEditing] = useState(false);
 
-    function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     onUpdateUser({
       name: values.name,
@@ -41,7 +48,10 @@ function Profile({ onUpdateUser, onSignOut }) {
   }, [currentUser, isEditing, setValues]);
 
   function checkDataChanged() {
-    if (values.name !== currentUser.name || values.email !== currentUser.email) {
+    if (
+      values.name !== currentUser.name ||
+      values.email !== currentUser.email
+    ) {
       setIsEditing(true);
     } else {
       setIsEditing(false);
@@ -56,7 +66,7 @@ function Profile({ onUpdateUser, onSignOut }) {
     <section className="profile">
       <Header isLoggedIn={true} />
       <main className="profile__container">
-          <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
+        <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
 
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__line">
@@ -95,7 +105,14 @@ function Profile({ onUpdateUser, onSignOut }) {
           {isEditing ? (
             <button
               type="submit"
-              className="profile__edit button link"
+              // className="profile__edit button link"
+              className={`profile__edit button link ${
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+                  ? "profile__edit_disabled"
+                  : ""
+              }`}
               disabled={
                 !isValid ||
                 (values.name === currentUser.name &&

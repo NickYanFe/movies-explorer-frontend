@@ -7,6 +7,7 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import InfoToolTip from "../InfoToolTip/Infotooltip";
 import { SHORTS_DURATION } from "../constants/constants";
 import { NOT_FOUND_RESULTS, ENTER_SEARCH_TEXT } from "../constants/constants";
+import Preloader from "../Movies/Preloader/Preloader"
 
 
 function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
@@ -113,9 +114,11 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
         .then((data) => {
           localStorage.setItem("allMovies", JSON.stringify(data));
           setAllMovies(data);
+          setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
+          setIsLoading(false);
         });
     }
   }, []);
@@ -132,14 +135,16 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
             isShortMovies={isShortMovies}
             checkboxToggle={checkboxToggle}
           />
-     
+     {isLoading ? (
+            <Preloader />
+          ) : (
             <MoviesCardList
               movies={filteredMovies}
               savedMovies={savedMovies}
               handleSaveMovie={handleSaveMovie}
               handleDeleteMovie={handleDeleteMovie}
             />
-         
+          )}
           {filteredMovies.length === 0 && searchMovieText !== "" && (
             <p className="search-span">{NOT_FOUND_RESULTS}</p>
           )}
