@@ -2,7 +2,7 @@ import React from "react";
 import search_icon from "../../../images/search_icon.svg";
 
 function SearchForm(props) {
-  const { onSubmit, isShortMovies, setSearchMovieText, checkboxToggle } = props;
+  const { onSubmit, isShortMovies, searchMovieText, setSearchMovieText, checkboxToggle } = props;
 
   const [searchText, setSearchText] = React.useState("");
 
@@ -37,6 +37,7 @@ function SearchForm(props) {
           placeholder="Фильм"
           required
           id="searchform__input"
+          value={(searchMovieText ?? searchText)}
           onChange={handleChange}
         />
         <button className="searchform__button button" type="submit" />
