@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from "../Preloader/Preloader";
 
 import {
   DESKTOP_WIDTH_SIZE,
@@ -17,6 +18,7 @@ function MoviesCardList({
   savedMovies,
   handleSaveMovie,
   handleDeleteMovie,
+  preloader,
 }) {
   const [shownMovies, setShownMovies] = useState(0);
 
@@ -72,19 +74,22 @@ function MoviesCardList({
           ))}
         </div>
       ) : (
-        <div className="moviescardlist__grid">
-          {movies.slice(0, shownMovies).map((movie) => (
-            <MoviesCard
-              key={movie.id}
-              movies={movies}
-              movie={movie}
-              saved={getSavedCard(savedMovies, movie)}
-              savedMovies={savedMovies}
-              handleSaveMovie={handleSaveMovie}
-              handleDeleteMovie={handleDeleteMovie}
-            />
-          ))}
-        </div>
+        <>
+          {preloader && <Preloader />}
+          <div className="moviescardlist__grid">
+            {movies.slice(0, shownMovies).map((movie) => (
+              <MoviesCard
+                key={movie.id}
+                movies={movies}
+                movie={movie}
+                saved={getSavedCard(savedMovies, movie)}
+                savedMovies={savedMovies}
+                handleSaveMovie={handleSaveMovie}
+                handleDeleteMovie={handleDeleteMovie}
+              />
+            ))}
+          </div>
+        </>
       )}
 
       {movies.length > shownMovies ? (

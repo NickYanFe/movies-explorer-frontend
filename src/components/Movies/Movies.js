@@ -7,8 +7,6 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import InfoToolTip from "../InfoToolTip/Infotooltip";
 import { SHORTS_DURATION } from "../constants/constants";
 import { NOT_FOUND_RESULTS, ENTER_SEARCH_TEXT } from "../constants/constants";
-import Preloader from "../Movies/Preloader/Preloader"
-
 
 function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(null);
@@ -47,6 +45,7 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
   const [isShortMovies, setIsShortMovies] = useState(false);
   const [searchMovieText, setSearchMovieText] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [preloader, setPreloader] = useState(false);
 
   function filterMovies(allMovies, searchMovieText, isShortMovies) {
     if (searchMovieText === "") {
@@ -108,17 +107,19 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
       setAllMovies(JSON.parse(storageAllMovies));
       setIsLoading(false);
     } else {
-      setIsLoading(true);
+      // setIsLoading(true);
+      setPreloader(true);
       moviesApi
         .getMovies()
         .then((data) => {
           localStorage.setItem("allMovies", JSON.stringify(data));
           setAllMovies(data);
-          setIsLoading(false);
         })
         .catch((error) => {
           console.log(error);
-          setIsLoading(false);
+        })
+        .finally(() => {
+          setPreloader(false);
         });
     }
   }, []);
@@ -135,16 +136,16 @@ function Movies({ handleSaveMovie, handleDeleteMovie, savedMovies }) {
             isShortMovies={isShortMovies}
             checkboxToggle={checkboxToggle}
           />
-     {isLoading ? (
-            <Preloader />
-          ) : (
-            <MoviesCardList
-              movies={filteredMovies}
-              savedMovies={savedMovies}
-              handleSaveMovie={handleSaveMovie}
-              handleDeleteMovie={handleDeleteMovie}
-            />
-          )}
+
+          <MoviesCardList
+            movies={filteredMovies}
+            savedMovies={savedMovies}
+            handleSaveMovie={handleSaveMovie}
+            handleDeleteMovie={handleDeleteMovie}
+            preloader={preloader}
+          
+          />
+
           {filteredMovies.length === 0 && searchMovieText !== "" && (
             <p className="search-span">{NOT_FOUND_RESULTS}</p>
           )}
