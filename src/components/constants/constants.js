@@ -23,11 +23,11 @@ export const mainApiConfig = {
 
 export const PATTERN_EMAIL = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_]+\\.{1,1}[a-z]{2,}";
 
-export const DESKTOP_WIDTH_SIZE = 1280;
+export const DESKTOP_WIDTH_SIZE = 768;
 export const DESKTOP_CARDS_COUNT = 12;
 export const DESKTOP_MORE_CARDS_COUNT = 3;
 
-export const TABLET_WIDTH_SIZE = 726;
+export const TABLET_WIDTH_SIZE = 481;
 export const TABLET_CARDS_COUNT = 8;
 
 export const MOBILE_CARDS_COUNT = 5;
